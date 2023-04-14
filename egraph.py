@@ -162,7 +162,7 @@ class EGraph:
                 if (self.checkIfVerticeIsGraph(sll) == None):
                   self.createNewVertice(sll)
                 else:
-                  print("EGPH Syntax Error: Specified vertice {} already exists. (Line {})".format(sln))
+                  print("EGPH Syntax Error: Specified vertice {} already exists. (Line {})".format(sll, sln))
                   return
           else:
             print("EGPH Syntax Error: Must start with 'VERTICES' to read. (Line 3)")
@@ -231,7 +231,7 @@ class EGraph:
       elif (str.lower(a) == 'n'):
         self.isValue = False
       else:
-        print("Specify a valid input (Y or N)")
+        print("Specify a valid input (Y or N).")
         return
     else:
       print("Specify a valid input (Y or N).")
@@ -405,7 +405,7 @@ class EGraph:
           continue
         va = self.checkIfVerticeIsGraph(va)
         if (va == None):
-          print("The vertice's sender is not on a graph. List vertices by typing 'B'.")
+          print("The vertice sender is not on a graph. List vertices by typing 'B'.")
           print("Remember that it is case SeNsItIvE.")
           continue
 
@@ -416,7 +416,7 @@ class EGraph:
           continue
         vb = self.checkIfVerticeIsGraph(vb)
         if (vb == None):
-          print("The vertice's destination is not on a graph. List vertices by typing 'B'.")
+          print("The vertice destination is not on a graph. List vertices by typing 'B'.")
           print("Remember that it is case SeNsItIvE.")
           continue
 
