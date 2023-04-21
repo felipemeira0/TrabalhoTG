@@ -28,6 +28,17 @@ class EGraph:
     res = res.replace("\n", "")
     return res
 
+  def removeSpacesinNames(self, name):
+    res = name
+    if (type(name) == str):
+      res = res.lstrip()
+      res = res.rstrip()
+      res = res.strip()
+      res = res.replace("\u0020", "")
+      return res
+    else:
+      return name
+
   def checkIfVerticeIsGraph(self, name):
     for i in self.vertices:
       if (i.name == name):
@@ -43,14 +54,17 @@ class EGraph:
     return False
 
   def createNewVertice(self, name):
-    ex = self.checkIfVerticeIsGraph(name)
+    ex = self.removeSpacesinNames(name)
+    if (ex != name):
+      return "Spaces for vertice names not allowed."
+    ex = self.checkIfVerticeIsGraph(ex)
     if (ex == None):
       v = Vertice(name)
       self.vertices.append(v)
       self.vertice = self.vertice + 1
       return "OK"
     else:
-      return "Vertice '{}' already exists. ".format(name)
+      return "Vertice '{}' already exists. ".format(ex)
 
   def createNewEdge(self, v1, v2, val):
     vb1 = self.checkIfVerticeIsGraph(v1)
@@ -130,7 +144,7 @@ class EGraph:
       try:
         int(vc)
       except:
-        messagebox.showerror(title="EfficientGraph", message="Specify a valid value.")
+        messagebox.showerror(title="EfficientGraph", message="Specify a valid numeric value.")
         self.inuse = False
         return
     mm = self.createNewEdge(va.name, vb.name, vc)
