@@ -168,7 +168,8 @@ class EGraph:
         aa = aa + "({})\n".format(i.name) # Lista o nome de cada vértice
     else: # Nenhum vértice existe
       aa = aa + "No vertices on this graph..."
-    Label(top, text=aa, font=("Monospace", 12)).grid(column=0, row=0)
+    print(aa)
+    Label(top, text=aa, font=("Monospace", 12)).grid(column=0, row=1)
     aa = "{} EDGES\n".format(self.edge) # Número existente de arestas
     if (self.edge > 0): # Existe algum aresta
       for i in self.edges: # Lista o nome de cada vértice em sua perspetiva formatação
@@ -182,8 +183,9 @@ class EGraph:
           aa = aa + "({})--------({})\n".format(i.fr.name, i.to.name)
     else: # Nenhum aresta existe
       aa = aa + "No edges on this graph..."
-    Label(top, text=aa, font=("Monospace", 12)).grid(column=2, row=0)
-    Button(top, text="OK", font="Arial", command=lambda: self.closeListDialog()).grid(column=1, row=1) # Fecha o pop-up e o estado de inuse fica falso
+    print(aa)
+    Label(top, text=aa, font=("Monospace", 12)).grid(column=2, row=1)
+    Button(top, text="OK", font="Arial", command=lambda: self.closeListDialog()).grid(column=1, row=0) # Fecha o pop-up e o estado de inuse fica falso
 
   def listVerticeAdjactives(self): # Função para listar os vértices adjacentes
     if (self.inuse == True): # Caso tenha algum diálogo aberto de outra função
@@ -192,7 +194,7 @@ class EGraph:
     self.inuse = True # Sinaliza que está função está em execução (uma caixa de diálogo por vez para não causar conflito)
     kl = False # Indicar que há uma conexão entre o vértice atual a um vértice adjacente
     co = 0 # Coluna de exibição e organização
-    ro = 0 # Linha de exibição e organização
+    ro = 1 # Linha de exibição e organização
     aa = '' # Lista dos vértices adjacentes
     if (self.vertice == 0): # Nenhum vértice existe
       messagebox.showerror(title="EfficientGraph", message="No vertices on your graph. Try adding it!")
@@ -239,11 +241,11 @@ class EGraph:
         ro = ro + 1 # Incrementa mais uma linha na exibição da interface gráfica
 
     ro = ro + 1 # Incrementa mais uma linha na exibição da interface gráfica
-    if ((ro-1) > 0): # Caso tenha mais que 4 vértices
+    if ((ro-1) > 1): # Caso tenha mais que 4 vértices
       co = 2 # Botão é exibido no meio
     else:  # Caso tenha menos que 4 vértices
       co = 0 # Botão é exibido no começo
-    Button(top, text="OK", font="Arial", command=lambda: self.closeListDialog()).grid(column=co, row=ro) # Fecha o pop-up e o estado de inuse fica falso
+    Button(top, text="OK", font="Arial", command=lambda: self.closeListDialog()).grid(column=co, row=0) # Fecha o pop-up e o estado de inuse fica falso
     
   def checkVerticeGrau(self): # Função para identificar o grau do vértice
     if (self.inuse == True): # Caso tenha algum diálogo aberto de outra função
