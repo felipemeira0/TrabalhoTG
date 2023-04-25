@@ -445,50 +445,50 @@ class EGraph:
               if (self.isValue == False): # Não é valorado
                 break # Para
             if (self.isValue == True): # É valorado
-              if (sdv[i.to.name] != -1):
-                if (sdv[i.to.name] >= (int(sdv[cv]) + int(i.val))):
+              if (sdv[i.to.name] != -1): #se o vertice de destino for diferente que -1
+                if (sdv[i.to.name] >= (int(sdv[cv]) + int(i.val))): #se o vertice de destino for menor ou igual a soma do vertice atual mais o valor da aresta atual
                   isnex = True
-                  sdv[i.to.name] = int(sdv[cv]) + int(i.val)
-                  sdp[i.to.name] = cv
+                  sdv[i.to.name] = int(sdv[cv]) + int(i.val) #vertice atual é igual a soma do vertice atual mais o valor da aresta atual
+                  sdp[i.to.name] = cv #adiciona o vertice visitado
               else:
                 isnex = True
                 sdv[i.to.name] = int(sdv[cv]) + int(i.val)
                 sdp[i.to.name] = cv
-            elif (i.to.name not in qun and i.to.name not in qu and i.to.name not in quo):
+            elif (i.to.name not in qun and i.to.name not in qu and i.to.name not in quo): #verifica se o nome do no de destino de uma aresta i não está presente em três listas diferentes: "qun", "qu" e "quo". Adiciona na lista quin e quo o nome do vertice
               isnex = True
-              qun.append(i.to.name)
-              quo.append(i.to.name)
-        elif (self.isDirect == False and i.to.name == cv):
-          if (i.fr.name not in visi):
-            if (i.fr.name == vb.name):
-              fou = True
-              if (self.isValue == False):
+              qun.append(i.to.name) #adiciona na lista qun
+              quo.append(i.to.name) #adiciona na lista quo
+        elif (self.isDirect == False and i.to.name == cv): #se o grafo não for direcionado  e o vertice for o atual
+          if (i.fr.name not in visi): #se o vertice de origem não estiver em visitado
+            if (i.fr.name == vb.name): #se o vertice de origem for o vertice final
+              fou = True #vertice encontrado
+              if (self.isValue == False):#se não for valorado, saia 
                 break
-            if (self.isValue == True):
-              if (sdv[i.fr.name] != -1):
-                if (sdv[i.fr.name] >= (int(sdv[cv]) + int(i.val))):
-                  isnex = True
-                  sdv[i.fr.name] = int(sdv[cv]) + int(i.val)
-                  sdp[i.fr.name] = cv
+            if (self.isValue == True):#se for valorado
+              if (sdv[i.fr.name] != -1):#se o vertice atual for diferente de -1
+                if (sdv[i.fr.name] >= (int(sdv[cv]) + int(i.val))):#se o vertice visitado for menor ou igual a soma do vertice atual mais o valor da aresta
+                  isnex = True  
+                  sdv[i.fr.name] = int(sdv[cv]) + int(i.val) #vertice atual é igual a soma do vertice atual mais o valor da aresta atual
+                  sdp[i.fr.name] = cv #adiciona o vertice visitado
               else:
                 isnex = True
-                sdv[i.fr.name] = int(sdv[cv]) + int(i.val)
-                sdp[i.fr.name] = cv
-            elif (i.fr.name not in qun and i.fr.name not in qu and i.fr.name not in quo):
+                sdv[i.fr.name] = int(sdv[cv]) + int(i.val) #vertice atual é igual a soma do vertice atual mais o valor da aresta atual
+                sdp[i.fr.name] = cv #adiciona o vertice visitado
+            elif (i.fr.name not in qun and i.fr.name not in qu and i.fr.name not in quo): #verifica se o nome do no de destino de uma aresta i não está presente em três listas diferentes: "qun", "qu" e "quo". Adiciona na lista quin e quo o nome do vertice
               isnex = True
-              qun.append(i.fr.name)
-              quo.append(i.fr.name)
-      if (fou == True and self.isValue == False):
+              qun.append(i.fr.name) #adiciona na lista qun
+              quo.append(i.fr.name) #adiciona na lista quo
+      if (fou == True and self.isValue == False): #se o vertice for encontrado e não for valorado, saia 
         break
-      if (self.isValue == False):
-        for i in quo:
+      if (self.isValue == False): #se não for valorado
+        for i in quo: #Percorre a lista e da o resultado do caminho
           for j in stea:
             if (j.endswith(cv) and isnex == True):
               k = j + " -> " + i
               stea.append(k)
       visi.append(cv)
 
-    if (fou == True):
+    if (fou == True): #se o vertice for encontrado ele vai printar na interface os vertices
       aa = ''
       top = Toplevel()
       top.title("EfficientGraph")
