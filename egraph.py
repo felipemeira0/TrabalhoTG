@@ -60,7 +60,7 @@ class EGraph:
       self.vertice = self.vertice + 1 # Incrementa o número total de vértices
       return "OK"
     else:
-      return "Vertice '{}' already exists. ".format(ex) # Vértice já existe com o parâmetro que foi passado
+      return "Vertice '{}' already exists. ".format(ex.name) # Vértice já existe com o parâmetro que foi passado
 
   def createNewEdge(self, v1, v2, val): # Função para criar a aresta
     vb1 = self.checkIfVerticeIsGraph(v1)
