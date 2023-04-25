@@ -7,6 +7,9 @@ C
 D
 E
 F
+G
+H
+I
 ENDVERTICES
 EDGES
 A,B,1
@@ -16,4 +19,6 @@ B,D,3
 C,E,1
 D,F,11
 E,F,1
+G,H,4
+H,I,2
 ENDEDGES
