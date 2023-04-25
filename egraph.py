@@ -1,7 +1,3 @@
-# EFFICIENTGRAPH
-# GRAPH THEORY SYSTEM
-# MADE BY FELIPE MEIRA
-
 import os # Biblioteca para interação com o SO
 from tkinter import * # Pacote de interface gráfica
 from tkinter import ttk # Subpacote de widgets
@@ -28,7 +24,7 @@ class EGraph:
     res = res.replace("\n", "") # Substituir a quebra de linha por vazio
     return res
 
-  def removeSpacesinNames(self, name): # Função que impossibilita usar espaço na nomeiação do vértice
+  def removeSpacesinNames(self, name): # Função que impossibilita usar espaço na nomeação do vértice
     res = name
     if (type(name) == str):
       res = res.lstrip() 
@@ -116,25 +112,25 @@ class EGraph:
       return
     self.inuse = True # Uma caixa de diálogo (execução) por vez para não causar conflito
     global guist
-    va = '' # Input do vétice A do usuário
+    va = '' # Input do vértice A do usuário
     va = simpledialog.askstring(title="EfficientGraph", prompt="What is the name of a vertice sender? (Case SeNsItIvE)") # Caixa de diálogo para inserção (FROM)
     if (va == None or va == ''): # Nenhum input colocado pelo usuário
       messagebox.showerror(title="EfficientGraph", message="Specify a valid name for the vertice.")
       self.inuse = False # Para poder executar novamente
       return
     va = self.checkIfVerticeIsGraph(va)
-    if (va == None): # O vétice A não existe
+    if (va == None): # O vértice A não existe
       messagebox.showerror(title="EfficientGraph", message="The vertice's name you inputted is not on a graph. Try listing vertices.\nRemember that it is case SeNsItIvE.")
       self.inuse = False # Para poder executar novamente
       return
-    vb = '' # Input do vétice B do usuário
+    vb = '' # Input do vértice B do usuário
     vb = simpledialog.askstring(title="EfficientGraph", prompt="What is the name of a vertice destination? (Case SeNsItIvE)") # Caixa de diálogo para inserção (TO)
     if (vb == None or vb == ''): # Nenhum input colocado pelo usuário
       messagebox.showerror(title="EfficientGraph", message="Specify a valid name for the vertice.")
       self.inuse = False # Para poder executar novamente
       return
     vb = self.checkIfVerticeIsGraph(vb)
-    if (vb == None): # O vétice B não existe
+    if (vb == None): # O vértice B não existe
       messagebox.showerror(title="EfficientGraph", message="The vertice's name you inputted is not on a graph. Try listing vertices.\nRemember that it is case SeNsItIvE.")
       self.inuse = False # Para poder executar novamente
       return
@@ -175,7 +171,7 @@ class EGraph:
     Label(top, text=aa, font=("Monospace", 12)).grid(column=0, row=0)
     aa = "{} EDGES\n".format(self.edge) # Número existente de arestas
     if (self.edge > 0): # Existe algum aresta
-      for i in self.edges: # Lista o nome de cada vértice em sua perpectiva formatação
+      for i in self.edges: # Lista o nome de cada vértice em sua perspetiva formatação
         if (self.isDirect == True and self.isValue == True): # É direcionado e valorado
           aa = aa + "({})--[{}]-->({})\n".format(i.fr.name, i.val, i.to.name)
         elif (self.isDirect == True and self.isValue == False): # É direcionado e não é valorado
@@ -304,25 +300,25 @@ class EGraph:
     if (self.inuse == True): # Caso tenha algum diálogo aberto de outra função
       return # Encerra a função atual
     self.inuse = True # Sinaliza que está função está em execução (uma caixa de diálogo por vez para não causar conflito)
-    va = '' # Input do vétice A pelo usuário
+    va = '' # Input do vértice A pelo usuário
     va = simpledialog.askstring(title="EfficientGraph", prompt="What is the name of a vertice from? (Case SeNsItIvE)") # Caixa de diálogo para inserção (FROM)
     if (va == None or va == ''): # Nenhum input colocado pelo usuário para o vértice A
       messagebox.showerror(title="EfficientGraph", message="Specify a valid name for the vertice.")
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
     va = self.checkIfVerticeIsGraph(va)
-    if (va == None): # O vétice A não existe
+    if (va == None): # O vértice A não existe
       messagebox.showerror(title="EfficientGraph", message="The vertice's name you inputted is not on a graph. Try listing vertices.\nRemember that it is case SeNsItIvE.")
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
-    vb = '' # Input do vétice B pelo usuário
+    vb = '' # Input do vértice B pelo usuário
     vb = simpledialog.askstring(title="EfficientGraph", prompt="What is the name of a vertice to? (Case SeNsItIvE)") # Caixa de diálogo para inserção (TO)
     if (vb == None or vb == ''): # Nenhum input colocado pelo usuário para o vértice B
       messagebox.showerror(title="EfficientGraph", message="Specify a valid name for the vertice.")
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
     vb = self.checkIfVerticeIsGraph(vb)
-    if (vb == None): # O vétice B não existe
+    if (vb == None): # O vértice B não existe
       messagebox.showerror(title="EfficientGraph", message="The vertice's name you inputted is not on a graph. Try listing vertices.\nRemember that it is case SeNsItIvE.")
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
@@ -357,25 +353,25 @@ class EGraph:
       return # Encerra a função atual
     self.inuse = True # Sinaliza que está função está em execução (uma caixa de diálogo por vez para não causar conflito)
     global top
-    va = '' # Input do vétice A pelo usuário
+    va = '' # Input do vértice A pelo usuário
     va = simpledialog.askstring(title="EfficientGraph", prompt="What is the vertice to go through other vertices?") # Caixa de diálogo para inserção (FROM)
     if (va == None or va == ''): # Nenhum input colocado pelo usuário para o vértice A
       messagebox.showerror(title="EfficientGraph", message="Specify a valid name for the vertice.")
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
     va = self.checkIfVerticeIsGraph(va)
-    if (va == None): # O vétice A não existe
+    if (va == None): # O vértice A não existe
       messagebox.showerror(title="EfficientGraph", message="The vertice's name you inputted is not on a graph. Try listing vertices.\nRemember that it is case SeNsItIvE.")
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
-    vb = '' # Input do vétice B pelo usuário
+    vb = '' # Input do vértice B pelo usuário
     vb = simpledialog.askstring(title="EfficientGraph", prompt="What is the vertice of destination?") # Caixa de diálogo para inserção (TO)
     if (vb == None or vb == ''): # Nenhum input colocado pelo usuário para o vértice B
       messagebox.showerror(title="EfficientGraph", message="Specify a valid name for the vertice.")
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
     vb = self.checkIfVerticeIsGraph(vb)
-    if (vb == None): # O vétice B não existe
+    if (vb == None): # O vértice B não existe
       messagebox.showerror(title="EfficientGraph", message="The vertice's name you inputted is not on a graph. Try listing vertices.\nRemember that it is case SeNsItIvE.")
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
@@ -384,16 +380,16 @@ class EGraph:
       self.inuse = False # Para poder executar novamente
       return # Encerra a função atual
 
-    cv = '' # Current Vertice to find adjacent vertices. | Vértice atual em busca dos seus adjacentes
+    cv = '' # Current Vertice to find adjacent vertices | Vértice atual em busca dos seus adjacentes
     visi = [] # Lista dos vértices visitados
     qu = [] # Fila
     qun = [] # Próxima fila
-    quo = [] # Next vertice every run. | Lista dos vétices para cada execução
-    ste = 1 # True if the vertice is found on the path. | Se um vértice foi encontrado no caminho
+    quo = [] # Next vertice every run | Lista dos vértices para cada execução
+    ste = 1 # True if the vertice is found on the path | Se um vértice foi encontrado no caminho
     stea = [] # Array of Steps | Lista de etapas do caminho
-    fou = False # True if vertice is found. | Se o vértice foi encontrado
-    isnex = False # True if next vertice is found. | Se o próximo vértice foi encontrado
-    sdv = {} # For valued graphs to calculate. |
+    fou = False # True if vertice is found | Se o vértice foi encontrado
+    isnex = False # True if next vertice is found | Se o próximo vértice foi encontrado
+    sdv = {} # For valued graphs to calculate | Dicionário quando é um grafo valorado
     sdp = {} # Previous graphs. | Dicionário dos grafos anteriores
     sev = '' # NÃO UTILIZADO
 
@@ -407,7 +403,7 @@ class EGraph:
       sdv[va.name] = 0 # Define o vértice de partida como 0
       sdp[va.name] = va.name # Nome do vértice de partida
 
-    while (cv != vb.name): # Enquando o vértice atual for diferente do vértice de chegada
+    while (cv != vb.name): # Enquanto o vértice atual for diferente do vértice de chegada
       if (self.isValue == False): # Não é valorado
         if (len(qu) == 0): # Comprimento da fila é 0
           if (len(qun) == 0): # Comprimento da próxima fila é 0
@@ -454,7 +450,8 @@ class EGraph:
                 isnex = True
                 sdv[i.to.name] = int(sdv[cv]) + int(i.val)
                 sdp[i.to.name] = cv
-            elif (i.to.name not in qun and i.to.name not in qu and i.to.name not in quo): #verifica se o nome do no de destino de uma aresta i não está presente em três listas diferentes: "qun", "qu" e "quo". Adiciona na lista quin e quo o nome do vertice
+            elif (i.to.name not in qun and i.to.name not in qu and i.to.name not in quo): #verifica se o nome do no de destino de uma aresta i não está presente em três listas
+              #diferentes: "qun", "qu" e "quo". Adiciona na lista quin e quo o nome do vertice
               isnex = True
               qun.append(i.to.name) #adiciona na lista qun
               quo.append(i.to.name) #adiciona na lista quo
@@ -474,7 +471,8 @@ class EGraph:
                 isnex = True
                 sdv[i.fr.name] = int(sdv[cv]) + int(i.val) #vertice atual é igual a soma do vertice atual mais o valor da aresta atual
                 sdp[i.fr.name] = cv #adiciona o vertice visitado
-            elif (i.fr.name not in qun and i.fr.name not in qu and i.fr.name not in quo): #verifica se o nome do no de destino de uma aresta i não está presente em três listas diferentes: "qun", "qu" e "quo". Adiciona na lista quin e quo o nome do vertice
+            elif (i.fr.name not in qun and i.fr.name not in qu and i.fr.name not in quo): #verifica se o nome do no de destino de uma aresta i não está presente em três lista
+              #diferentes: #"qun", "qu" e "quo". Adiciona na lista quin e quo o nome do vertice
               isnex = True
               qun.append(i.fr.name) #adiciona na lista qun
               quo.append(i.fr.name) #adiciona na lista quo
@@ -488,7 +486,7 @@ class EGraph:
               stea.append(k)
       visi.append(cv)
 
-    if (fou == True): #se o vertice for encontrado ele vai printar na interface os vertices
+    if (fou == True): # Se o vertice for encontrado ele vai printar na interface os vertices
       aa = ''
       top = Toplevel()
       top.title("EfficientGraph")
@@ -632,10 +630,10 @@ class EGraph:
     re.close() # Fecha o arquivo
     return "OK"
 
-  def __init__(self): # Função incial e o menu do sistema
+  def __init__(self): # Função inicial e o menu do sistema
     self.inuse = False # Para poder executar novamente
-    self.vertices = list() # Cria uma ista vazia para preencher com vértices
-    self.edges = list() # Cria uma ista vazia para preencher com arestas
+    self.vertices = list() # Cria uma lista vazia para preencher com vértices
+    self.edges = list() # Cria uma lista vazia para preencher com arestas
     self.vertice = 0
     self.edge = 0
     os.system('clear') # Limpa a tela do terminal
@@ -695,7 +693,7 @@ class EGraph:
     guist = Label(self.guiroot, text="ORDEM: {} TAMANHO: {}".format(self.vertice, self.edge), font='Arial', bg='#EDFFCC')
     guist.pack(pady=20) # Espaçamento
 
-    self.guiroot.mainloop() # Mantem o menu principal para realizar ações
+    self.guiroot.mainloop() # Mantém o menu principal para realizar ações
 
     print("Thank you for using EfficientGraph!")
 
